@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\OrderController;
 
-Route::post(
-  '/calculate-shipping-date', [OrderController::class, 'calculateShippingDate']
-  );
+Route::get('/user', function (Request $request) {
+    return $request->user();
+})->middleware('auth:sanctum');
+Route::post('/calculate-shipping-date', [OrderController::class, 'calculateShippingDate']);
